@@ -1,91 +1,44 @@
-<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
-      <div class="row justify-content-center align-items-center h-100">
-        <div class="col-12 col-lg-9 col-xl-7">
-          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration</h3>
-              <form #registration="ngForm" (ngSubmit)="cusRegister(registration)" novalidate>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="text" ngModel name="firstName" class="form-control form-control-lg" />
-                      <label class="form-label" for="firstName">First Name</label>
-                    </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="text" ngModel name="lastName" class="form-control form-control-lg" />
-                      <label class="form-label" for="lastName">Last Name</label>
-                    </div>
-  
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4 d-flex align-items-center">
-  
-                    <div class="form-outline">
-                        <input type="text" ngModel name="Username" class="form-control form-control-lg" />
-                        <label class="form-label" for="Username">Username</label>
-                      </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                        <input type="password" ngModel name="Password" class="form-control form-control-lg" />
-                        <label class="form-label" for="Password">Password</label>
-                      </div>
-  
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4 pb-2">
-  
-                    <div class="form-outline">
-                      <input type="email" ngModel name="emailAddress" class="form-control form-control-lg" />
-                      <label class="form-label" for="emailAddress">Email</label>
-                    </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-4 pb-2">
-  
-                    <div class="form-outline">
-                      <input type="tel" ngModel name="phoneNumber" class="form-control form-control-lg" />
-                      <label class="form-label" for="phoneNumber">Phone Number</label>
-                    </div>
-  
-                  </div>
-                </div>
-  
-                <!--<div class="row">
-                  <div class="col-12">
-  
-                    <select class="select form-control-lg" ngModel name="subject">
-                      <option value="1" disabled>Choose option</option>
-                      <option value="2">Subject 1</option>
-                      <option value="3">Subject 2</option>
-                      <option value="4">Subject 3</option>
-                    </select>
-                    <label class="form-label select-label">Choose option</label>
-  
-                  </div>
-                </div> -->
-  
-                <div class="mt-4 pt-2">
-                  <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
-                </div>
-  
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+<body>
+  <form class="collect" #formcustomers="ngForm" (ngSubmit)="onSubmit(formcustomers)">
+    <div class="data">
+      <input type="hidden"  ngModel="{{customers.CustomerID}}"  name="CustomerID"  class="form-control form-control-lg" />
+      <input type="text" ngModel="{{customers.FirstName}}"  name="firstName"  class="form-control form-control-lg" />
+      <label class="label" for="firstName" >First Name</label>
     </div>
-  </section>
+    <div class="data">
+      <input type="int" ngModel="{{customers.LastName}}" name="lastName" class="form-control form-control-lg" />
+      <label class="label" for="lastName">Last Name</label>
+    </div>
+    <div class="data">
+      <input type="int" ngModel="{{customers.Email}}" name="email" class="form-control form-control-lg" />
+      <label class="label" for="email">Email</label>
+    </div>
+    <div class="data">
+      <input type="int" ngModel="{{customers.PhoneNo}}" name="phoneNo" class="form-control form-control-lg" />
+      <label class="label" for="phoneNo">Phone No</label>
+    </div>
+    <button class="btn" type="Add">Save</button>
+    
+  </form>
+  
+  <div>
+    <table class="table">
+      <tr class="tr">
+        <th>Customer ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone No</th>
+        <th>Action</th>
+      </tr>
+      <tr class="tr" *ngFor="let customer of customerslist">
+        <td>{{customer.CustomerID}}</td>
+        <td>{{customer.FirstName}}</td>
+        <td>{{customer.LastName}}</td>
+        <td>{{customer.Email}}</td>
+        <td>{{customer.PhoneNo}}</td>
+        <td><button class="btn" (click)="editCustomer(customer)">Edit</button><button class="btn"  (click)="deleteCustomer(customer.CustomerID)">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+</body>

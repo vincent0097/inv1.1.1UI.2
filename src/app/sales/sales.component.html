@@ -1,19 +1,25 @@
 <body>
-  <div class="data">
-    <input type="text" ngModel name="firstName" class="form-control form-control-lg" />
-    <label class="label" for="firstName">First Name</label>
-  </div>
-  <div class="data">
-    <input type="int" ngModel name="firstName" class="form-control form-control-lg" />
-    <label class="label" for="firstName">CustomerID</label>
-  </div>
-  <div class="data">
-    <input type="int" ngModel name="firstName" class="form-control form-control-lg" />
-    <label class="label" for="firstName">ProductID</label>
-  </div>
-  <button type="Add">Add</button>
-  <button type="Edit">Edit</button>
-  <button type="Delete">Delete</button>
+  <form class="collect" #salesdata="ngForm" (ngSubmit)="onSubmit(salesdata)">
+    <div class="data">
+      <input type="hidden"  ngModel="{{sales.SalesID}}"  name="SalesID"  class="form-control form-control-lg" />
+      <input type="int" ngModel="{{sales.CustomerID}}" name="customerID" class="form-control form-control-lg" />
+      <label class="label" for="customerID">CustomerID</label>
+    </div>
+    <div class="data">
+      <input type="hidden"  ngModel="{{sales.DateOfSale}}"  name="DateOfSale"  class="form-control form-control-lg" />
+      <input type="int" ngModel="{{sales.ProductID}}" name="productID" class="form-control form-control-lg" />
+      <label class="label" for="productID">ProductID</label>
+    </div>
+    <div class="data">
+      <input type="text" ngModel="{{sales.Unit_price}}" name="Unit_price" class="form-control form-control-lg" />
+      <label class="label" for="Unit_price">Unit Price</label>
+    </div>
+    <div class="data">
+      <input type="text" ngModel="{{sales.CustomerName}}" name="CustomerName" class="form-control form-control-lg" />
+      <label class="label" for="CustomerName">Customer Name</label>
+    </div>
+    <button class="btn" type="Add">Add</button>
+  </form>
   <div>
     <table class="table">
       <tr class="tr">
@@ -21,15 +27,20 @@
         <th>CustomerID</th>
         <th>Date Of sale</th>
         <th>ProductID</th>
-        <th>Cost</th>
-        <th>Total Cost</th>
+        <th>unit price</th>
+        <th>Customer Name</th>
+        <th>Action</th>
       </tr>
-      <tr>
-        
+      <tr class="tr"*ngFor="let sales of saleslist">
+        <td>{{sales.SalesID}}</td>
+        <td>{{sales.CustomerID}}</td>
+        <td>{{sales.DateOfSale}}</td>
+        <td>{{sales.ProductID}}</td>
+        <td>{{sales.Unit_price}}</td>
+        <td>{{sales.CustomerName}}</td>
+        <td><button class="btn" (click)="editSales(sales)">Edit</button><button class="btn" (click)="deleteSales(sales.SalesID)">Delete</button></td>
       </tr>
-      <tr>
-        
-      </tr>
+      <tr class="tr"></tr>
     </table>
   </div>
 </body>

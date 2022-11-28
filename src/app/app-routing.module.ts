@@ -20,6 +20,10 @@ const routes: Routes = [
      component: CustomersComponent,
    },
    {
+    path : 'transactions',
+    component: TransactionsComponent,
+  },
+   {
     path : 'inventory',
     component: InventoryComponent,
   },
@@ -30,10 +34,6 @@ const routes: Routes = [
   {
     path : 'sales',
     component: SalesComponent,
-  },
-  {
-    path : 'transactions',
-    component: TransactionsComponent,
   },
   {
    path : 'suppliers',
