@@ -11,7 +11,7 @@ import { SuppliersComponent } from './suppliers/suppliers.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 
 const routes: Routes = [
-  { path: '', component: AboutComponent },
+  { path: '', component: AuthComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'dash', component: DashboardComponent,
   children:[

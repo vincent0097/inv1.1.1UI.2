@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomersService } from '../src/app/customers.service';
 import { Auth } from './auth';
+import { AuthResponse } from './authresponse';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ import { Auth } from './auth';
 })
 export class AuthComponent {
   public auth: Auth;
-  constructor( private customersService: CustomersService){
+  constructor( private customersService: CustomersService,private router:Router){
     this.auth=new Auth();
   }
   
@@ -22,14 +24,18 @@ export class AuthComponent {
     console.log(data.value);
     this.auth=data.value;
     this.customersService.createAuth(this.auth).subscribe(
-      (response:any) =>{
+      (response:AuthResponse) =>{
+        console.log(response);
 
-        if(response=="successful"){
-          alert("Successful Login")
+        if(response.result.message=="success"){
+          
+          this.router.navigate(["/dash"])
+        }else{
+          alert(response.result.message)
         }
       },
       (error: HttpErrorResponse) => {
-        alert("Incorrect: "+error.message);
+        alert("Please enter username and password: "+error.message);
       }
     );
       
