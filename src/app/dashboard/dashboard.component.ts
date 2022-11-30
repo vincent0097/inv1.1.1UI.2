@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthComponent } from 'auth/auth.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-
+  
+  
+  logOut(){
+    sessionStorage.clear();
+    
+  }
+  
 }

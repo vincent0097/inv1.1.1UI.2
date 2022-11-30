@@ -1,7 +1,7 @@
 <body>
   <form #inventorydata="ngForm" (ngSubmit)="onSubmit(inventorydata)">
     <div class="data">
-      <input type="hidden"  ngModel="{{inventory.ProductID}"  name="CustomerID"  class="form-control form-control-lg" />
+      <input type="hidden"  ngModel="{{inventory.ProductID}}"  name="ProductID"  class="form-control form-control-lg" />
       <input type="text" ngModel="{{inventory.ProductName}}" name="ProductName" class="form-control form-control-lg" />
       <label class="label" for="ProductName">Product Name</label>
     </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Customers } from './customers/customers';
+import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-root',

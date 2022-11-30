@@ -14,6 +14,7 @@ import { SalesComponent } from './sales/sales.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Auth } from 'auth/auth';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule 
   ],
   providers: [],
+
   bootstrap: [AppComponent]
 })
+
+
+
 export class AppModule { }
